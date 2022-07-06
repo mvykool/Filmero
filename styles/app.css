@@ -1,0 +1,158 @@
+    html {
+        font-family: 'Nunito', sans-serif;
+        font-family: 'Roboto', sans-serif;
+        overflow-x: hidden;
+    }
+    
+    body {
+        margin: 0;
+        padding: 0;
+        background-color: var(--purple-1);
+    }
+    /*variables con paleta de colores*/
+    
+     :root {
+        --black-1: #2E0249;
+        --black-2: #000;
+        --purple-1: #570A57;
+        --purple-2: #A91079;
+        --purple-3: #F806CC;
+        --white: #fff;
+    }
+    /*CSS para top-part, logo, nav-bar, and search bar*/
+    
+    .header-container {
+        display: flex;
+        justify-content: space-evenly;
+        height: 10%;
+        width: 100vw;
+    }
+    /*logo*/
+    
+    .header-logo {
+        margin: 20px;
+        font-weight: 900;
+        color: var(--purple-3);
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+    /* search*/
+    
+    .header-search-bar {
+        height: 30px;
+        border-radius: 5px;
+        border: none;
+        margin: 20px 0 20px 20px;
+        display: none;
+    }
+    
+    .header-search-btn {
+        border: var(--purple-1);
+        background-color: var(--purple-2);
+        height: 50px;
+        width: 50px;
+        margin-top: 15px;
+        border-radius: 10px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 10px;
+    }
+    /*burger menu*/
+    
+    .header-burger-menu {
+        border: var(--purple-1);
+        background-color: var(--purple-2);
+        height: 50px;
+        width: 50px;
+        margin-top: 15px;
+        border-radius: 10px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
+        align-items: center;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+    /*header-nav-bar*/
+    
+    .header-nav-bar {
+        list-style: none;
+        background-color: var(--purple-2);
+        border-radius: 10px;
+        height: 50%;
+        padding: 20px 20px 20px 0;
+        position: fixed;
+        display: none;
+        margin-right: -350px;
+        margin-top: -10px;
+    }
+    
+    li {
+        margin: 25px;
+    }
+    
+    a {
+        text-decoration: none;
+        color: var(--black-2);
+    }
+    /*section, posters de peliculas*/
+    
+    .section-container {
+        background-color: var(--black-1);
+        padding: 10px;
+        margin: 15px 20px 15px 20px;
+        border-radius: 15px;
+        height: 100vh;
+    }
+    
+    .section-home-big-photo {
+        margin: 10px;
+    }
+    
+    .big-photo {
+        width: 90%;
+        border-radius: 15px;
+        padding: 10px 10px 10px 5px;
+        margin: 15px 15px 15px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .section-details {
+        background-color: var(--purple-1);
+        color: var(--white);
+        display: flex;
+        justify-content: space-evenly;
+        padding: 10px 10px 10px 5px;
+        margin: -27px 15px 15px 30px;
+        width: 82%;
+        border-radius: 0 0 15px 15px;
+    }
+    
+    .section-star-score {
+        margin-top: 10px;
+        font-size: 20px;
+    }
+    
+    .section-star {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .section-save-btn {
+        border: var(--purple-1);
+        background-color: var(--purple-2);
+        height: 40px;
+        width: 40px;
+        border-radius: 10px;
+        margin-right: -20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .section-save {
+        height: 20px;
+        width: 20px;
+    }

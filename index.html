@@ -5,11 +5,55 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- link de CSS & google fonts-->
     <link rel="stylesheet" href="styles/app.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;900&family=Roboto:wght@500&display=swap" rel="stylesheet">
     <title>Filmore</title>
 </head>
 
 <body>
+    <!--top part, logo, navbar, and search bar-->
+    <header>
+        <div class="header-container">
+            <span class="header-logo">Filmore</span>
+
+            <label for="header-search"></label>
+            <input type="search" class="header-search-bar" id="header-search">
+            <button class="header-search-btn"><img src="imgs/search-icon.svg" alt=""></button>
+
+            <div class="header-burger-menu">
+                <img src="imgs/burger-menu.svg" alt="">
+            </div>
+            <ul class="header-nav-bar">
+                <li>
+                    <a href="#">Home</a>
+                </li>
+                <li>
+                    <a href="#">Trending</a>
+                </li>
+                <li>
+                    <a href="#">Tv Shows</a>
+                </li>
+            </ul>
+
+        </div>
+    </header>
+
+    <!--Main section with movies-->
+    <section class="section-container">
+        <div class="section-home-big-photo">
+            <img class="big-photo" src="imgs/poster.jpg" alt="">
+
+        </div>
+        <div class="section-details">
+            <div class="section-score"><img class="section-star" src="imgs/star.png" alt="" srcset="">
+            </div><span class="section-star-score">7.9</span>
+            <button class="section-save-btn" type="button"> <div class="sectoin-save"><img class="section-save" src="imgs/save.png" alt="" srcset=""></div></button>
+        </div>
+    </section>
 
 
     <script src="src/main.js"></script>
