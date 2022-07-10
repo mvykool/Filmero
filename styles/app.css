@@ -1,13 +1,16 @@
     html {
         font-family: 'Nunito', sans-serif;
         font-family: 'Roboto', sans-serif;
-        overflow-x: hidden;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
     }
     
     body {
         margin: 0;
         padding: 0;
         background-color: var(--purple-1);
+        max-width: 100% !important;
+        overflow-x: hidden !important;
     }
     /*variables con paleta de colores*/
     
@@ -25,7 +28,7 @@
         display: flex;
         justify-content: space-evenly;
         height: 10%;
-        width: 100vw;
+        overflow-x: hidden !important;
     }
     /*logo*/
     
@@ -100,7 +103,8 @@
         padding: 10px;
         margin: 15px 20px 15px 20px;
         border-radius: 15px;
-        height: 100vh;
+        height: auto;
+        overflow-x: hidden !important;
     }
     
     .section-home-big-photo {
@@ -155,4 +159,27 @@
     .section-save {
         height: 20px;
         width: 20px;
+    }
+    /*trending section*/
+    
+    .section-trending-title {
+        font-size: 30px;
+        margin-left: 35px;
+        color: var(--purple-3);
+        letter-spacing: 5px;
+    }
+    
+    .section-trending-container {
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        overflow-x: hidden !important;
+    }
+    
+    .section-trending-movies {
+        height: 180px;
+        width: 150px;
+        margin: 15px 5px 15px 5px;
+        border-radius: 10px;
     }
