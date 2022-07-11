@@ -21,7 +21,7 @@
             <span class="header-logo">Filmore</span>
 
             <label for="header-search"></label>
-            <input type="search" class="header-search-bar" id="header-search">
+            <input type="search" class="header-search-bar" id="header-search" placeholder="Morbius">
             <button class="header-search-btn"><img src="imgs/search-icon.svg" alt=""></button>
 
             <div class="header-burger-menu">
@@ -35,7 +35,7 @@
                     <a href="#">Trending</a>
                 </li>
                 <li>
-                    <a href="#">Tv Shows</a>
+                    <a href="#">Categories</a>
                 </li>
             </ul>
 
@@ -44,6 +44,26 @@
 
     <!--Main section with movies-->
     <section class="section-container">
+
+        <section class="section-category-container" id="category-preview">
+
+            <h1 class="section-category-title">Categories</h1>
+
+
+            <ul class="category-preview-list">
+                <li>
+                    <div class="category-text">
+                        <h3>Morbius</h3>
+                    </div>
+                </li>
+
+            </ul>
+
+        </section>
+
+        <h1 class="section-title">Trending 🔥</h1>
+
+
         <div class="section-home-big-photo">
             <img class="big-photo" src="imgs/poster.jpg" alt="">
 
@@ -54,17 +74,20 @@
             <button class="section-save-btn" type="button"> <div class="sectoin-save"><img class="section-save" src="imgs/save.png" alt="" srcset=""></div></button>
         </div>
 
+
+
         <!--Trending section-->
 
-        <h1 class="section-trending-title">Trending 🔥</h1>
+        <h1 class="section-title">More Movies 🎥</h1>
 
-        <section class="section-trending">
+
+
+        <section id="section-trending-preview" class="section-trending">
 
             <div class="section-trending-container">
-                <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
-                <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
-                <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
-                <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
+                <div>
+                    <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
+                </div>
 
             </div>
 
@@ -73,7 +96,59 @@
     </section>
 
     <!--footer-->
-    <footer></footer>
+    <footer>
+        <div class="footer">
+
+            <div class="footer">
+                <div class="contain">
+
+                    <div class="col">
+                        <h1>Products</h1>
+                        <ul>
+                            <li>About</li>
+                            <li>Mission</li>
+                            <li>Services</li>
+                            <li>Social</li>
+                            <li>Get in touch</li>
+                        </ul>
+                    </div>
+                    <div class="col">
+                        <h1>Accounts</h1>
+                        <ul>
+                            <li>About</li>
+                            <li>Mission</li>
+                            <li>Services</li>
+                            <li>Social</li>
+                            <li>Get in touch</li>
+                        </ul>
+                    </div>
+
+                    <div class="col">
+                        <h1>Support</h1>
+                        <ul>
+                            <li>Contact us</li>
+                            <li>Web chat</li>
+                            <li>Open ticket</li>
+                        </ul>
+                    </div>
+                    <div class="col social">
+                        <h1>Social</h1>
+                        <ul class="footer-social-icons">
+                            <li><img class="footer-icon" c src="https://www.logo.wine/a/logo/Facebook/Facebook-f_Logo-Blue-Logo.wine.svg" width="32" style="width: 32px;"></li>
+                            <li><img class="footer-icon" src="https://www.logo.wine/a/logo/Instagram/Instagram-Logo.wine.svg" width="32" style="width: 32px;"></li>
+                            <li><img class="footer-icon" src="https://www.logo.wine/a/logo/TikTok/TikTok-Logo.wine.svg" width="32" style="width: 32px;"></li>
+                        </ul>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="copyright">
+            <h3 class="footer-title"> Filmore: &copy;</h3>
+        </div>
+    </footer>
 
     <script src="src/main.js"></script>
 </body>
