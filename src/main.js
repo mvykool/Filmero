@@ -45,14 +45,40 @@ async function moviesCategoryPreview() {
         const categoriesContainer = document.createElement("div");
         categoriesContainer.classList.add("category-text");
 
+        const emoji = document.createElement("span");
+        emoji.setAttribute("id", category.name);
+
         const categoryTitle = document.createElement("h3");
         const categoryTitleText = document.createTextNode(category.name);
 
+        //appending elements
+
         categoryTitle.appendChild(categoryTitleText);
+        categoryTitle.appendChild(emoji);
         categoriesContainer.appendChild(categoryTitle);
         categoriesList.appendChild(categoriesContainer)
         categoriesPreview.appendChild(categoriesList);
+
     });
+
+    //emojies next to the category
+
+    const morbious = document.querySelector(".morbious");
+    morbious.innerHTML = "🧛";
+    const action = document.querySelector("#Action");
+    action.innerHTML = " 🔫";
+    const adventure = document.querySelector("#Adventure");
+    adventure.innerHTML = " 🧭";
+    const animation = document.querySelector("#Animation");
+    animation.innerHTML = " ✏️";
+    const comedy = document.querySelector("#Comedy");
+    comedy.innerHTML = " 🤣";
+    const crime = document.querySelector("#Crime");
+    crime.innerHTML = " 👮";
+    const documentary = document.querySelector("#Documentary");
+    documentary.innerHTML = " 📓";
+    const drama = document.querySelector("#Drama");
+    drama.innerHTML = " 🎭";
 
 }
 
