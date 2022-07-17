@@ -1,13 +1,21 @@
-// API URL and API_KEY
+// API URL and API_KEY with axios
 
-const APIUrl = "https://api.themoviedb.org/3/";
-const API_KEY = "973a44bfebe3157e6ec593fd61a9ee99";
+const API = axios.create({
+    baseURL: "https://api.themoviedb.org/3/",
+    headers: {
+        "Content-type": "application/json;charset=utf-8",
+    },
+    params: {
+        "api_key": "973a44bfebe3157e6ec593fd61a9ee99",
+    },
+});
+
 
 //get movies previews
 
 async function moviesTrendingPreview() {
-    const res = await fetch(APIUrl + "trending/movie/day?api_key=" + API_KEY);
-    const data = await res.json();
+    const { data } = await API("trending/movie/day");
+
 
     const movies = data.results;
     movies.forEach(movie => {
@@ -31,9 +39,9 @@ async function moviesTrendingPreview() {
 
 //categories
 
+
 async function moviesCategoryPreview() {
-    const res = await fetch(APIUrl + "genre/movie/list?api_key=" + API_KEY);
-    const data = await res.json();
+    const { data } = await API("genre/movie/list");
 
     const categories = data.genres;
     categories.forEach(category => {
@@ -79,6 +87,28 @@ async function moviesCategoryPreview() {
     documentary.innerHTML = " 📓";
     const drama = document.querySelector("#Drama");
     drama.innerHTML = " 🎭";
+    const family = document.querySelector("#Family");
+    family.innerHTML = " 👪";
+    const fantasy = document.querySelector("#Fantasy");
+    fantasy.innerHTML = " 🦄";
+    const history = document.querySelector("#History");
+    history.innerHTML = " 📜";
+    const horror = document.querySelector("#Horror");
+    horror.innerHTML = " 👻";
+    const music = document.querySelector("#Music");
+    music.innerHTML = " 🎶";
+    const mistery = document.querySelector("#Mystery");
+    mistery.innerHTML = " 🕵️‍♀️";
+    const romance = document.querySelector("#Romance");
+    romance.innerHTML = " 💏";
+    const thriller = document.querySelector("#Thriller");
+    thriller.innerHTML = " 🧟";
+    const war = document.querySelector("#War");
+    war.innerHTML = " 🪖";
+    const western = document.querySelector("#Western");
+    western.innerHTML = " 🐎";
+
+
 
 }
 
