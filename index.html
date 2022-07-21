@@ -21,13 +21,15 @@
             <span class="header-logo">Filmore</span>
 
             <label for="header-search"></label>
-            <input type="search" class="header-search-bar" id="header-search" placeholder="Morbius">
+            <input type="search" class="header-search-bar " id="header-search" placeholder="   Morbius">
             <button class="header-search-btn"><img src="imgs/search-icon.svg" alt=""></button>
 
             <div class="header-burger-menu">
                 <img src="imgs/burger-menu.svg" alt="">
             </div>
-            <ul class="header-nav-bar">
+
+            <ul class="header-nav-bar ">
+                <img class="close-burger-menu" src="imgs/close-icon.svg" alt="" srcset="">
                 <li>
                     <a href="#">Home</a>
                 </li>
@@ -42,8 +44,11 @@
         </div>
     </header>
 
-    <!--Main section with movies-->
+    <!--Main section with all parts-->
+
     <section class="section-container">
+
+        <!--categories section-->
 
         <section class="section-category-container" id="category-preview">
 
@@ -61,28 +66,27 @@
 
         </section>
 
-        <h1 class="section-title">Trending 🔥</h1>
+        <!--Big photo home section-->
+
+        <section class="main-home-section ">
+            <div class="section-home-big-photo ">
+                <img class="big-photo" src="imgs/poster.jpg" alt="">
+
+            </div>
+            <div class="section-details">
+                <div class="section-score"><img class="section-star" src="imgs/star.png" alt="" srcset="">
+                </div><span class="section-star-score">7.9</span>
+                <button class="section-save-btn" type="button"> <div class="sectoin-save"><img class="section-save" src="imgs/save.png" alt="" srcset=""></div></button>
+            </div>
+
+        </section>
 
 
-        <div class="section-home-big-photo">
-            <img class="big-photo" src="imgs/poster.jpg" alt="">
+        <!--Trending pre-view section-->
 
-        </div>
-        <div class="section-details">
-            <div class="section-score"><img class="section-star" src="imgs/star.png" alt="" srcset="">
-            </div><span class="section-star-score">7.9</span>
-            <button class="section-save-btn" type="button"> <div class="sectoin-save"><img class="section-save" src="imgs/save.png" alt="" srcset=""></div></button>
-        </div>
+        <section id="section-trending-preview" class="section-trending ">
+            <h1 class="section-title">Popular Movies! 🎥</h1>
 
-
-
-        <!--Trending section-->
-
-        <h1 class="section-title">More Movies 🎥</h1>
-
-
-
-        <section id="section-trending-preview" class="section-trending">
 
             <div class="section-trending-container">
                 <div>
@@ -91,6 +95,51 @@
 
             </div>
 
+            <button class="section-trending-button">More movies</button>
+
+        </section>
+
+        <!--Complete trending section-->
+
+        <section id="section-trending-full-view" class="section-trending ">
+            <h1 class="section-title">Trending 🔥</h1>
+
+            <div class="section-trending-container">
+                <div>
+                    <img src="imgs/trending.jpg" class="section-trending-movies" alt="">
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+        <!--Movie details-->
+
+        <section class="movie-details-section ">
+
+            <div class="movie-details-bg">
+                <img class="movies-details-img" src="imgs/trending.jpg" alt="Morbius">
+            </div>
+            <div class="movie-details-fade">
+                <p class="movie-details-text">Accidentally turning himself into a vampire, Michael Morbius finds himself torn between his human and monstrous natures. Michael Morbius attempts to cure his life-long blood disease with experimental vampire bat science. In the process,
+                    he turns himself into a living vampire, tortured by his life-sustaining thirst.</p>
+            </div>
+            <div class="movie-detail-categories">
+                <ul>
+                    <li>
+                        <div class="category-text">
+                            <h3>Morbius</h3>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="category-text">
+                            <h3>Action <span id="Action"></span> </h3>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </section>
 
     </section>
@@ -152,7 +201,9 @@
 
     <!--Axios-->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="src/categories.js"></script>
     <script src="src/main.js"></script>
+    <script src="src/navigation.js"></script>
 </body>
 
 </html>

@@ -17,7 +17,7 @@ async function moviesTrendingPreview() {
     const { data } = await API("trending/movie/day");
 
 
-    const movies = data.results;
+    const movies = data.results.slice(0, 5);
     movies.forEach(movie => {
 
         const trendingMoviesPreview = document.querySelector("#section-trending-preview .section-trending-container");
@@ -36,6 +36,33 @@ async function moviesTrendingPreview() {
     });
 
 }
+
+//get movies page full view
+
+async function moviesTrendingFullView() {
+    const { data } = await API("trending/movie/day");
+
+
+    const moviesFull = data.results;
+    moviesFull.forEach(movie => {
+
+        const trendingMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
+
+        const movieContainerTrendingFullView = document.createElement("div");
+        movieContainerTrendingFullView.classList.add("movie-container");
+
+        const movieContainerTrendingFullViewImage = document.createElement("img");
+        movieContainerTrendingFullViewImage.classList.add("section-trending-movies");
+        movieContainerTrendingFullViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+
+        movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+        trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
+
+
+    });
+
+}
+
 
 //categories
 
@@ -69,48 +96,11 @@ async function moviesCategoryPreview() {
 
     });
 
-    //emojies next to the category
-
-    const morbious = document.querySelector(".morbious");
-    morbious.innerHTML = "🧛";
-    const action = document.querySelector("#Action");
-    action.innerHTML = " 🔫";
-    const adventure = document.querySelector("#Adventure");
-    adventure.innerHTML = " 🧭";
-    const animation = document.querySelector("#Animation");
-    animation.innerHTML = " ✏️";
-    const comedy = document.querySelector("#Comedy");
-    comedy.innerHTML = " 🤣";
-    const crime = document.querySelector("#Crime");
-    crime.innerHTML = " 👮";
-    const documentary = document.querySelector("#Documentary");
-    documentary.innerHTML = " 📓";
-    const drama = document.querySelector("#Drama");
-    drama.innerHTML = " 🎭";
-    const family = document.querySelector("#Family");
-    family.innerHTML = " 👪";
-    const fantasy = document.querySelector("#Fantasy");
-    fantasy.innerHTML = " 🦄";
-    const history = document.querySelector("#History");
-    history.innerHTML = " 📜";
-    const horror = document.querySelector("#Horror");
-    horror.innerHTML = " 👻";
-    const music = document.querySelector("#Music");
-    music.innerHTML = " 🎶";
-    const mistery = document.querySelector("#Mystery");
-    mistery.innerHTML = " 🕵️‍♀️";
-    const romance = document.querySelector("#Romance");
-    romance.innerHTML = " 💏";
-    const thriller = document.querySelector("#Thriller");
-    thriller.innerHTML = " 🧟";
-    const war = document.querySelector("#War");
-    war.innerHTML = " 🪖";
-    const western = document.querySelector("#Western");
-    western.innerHTML = " 🐎";
-
-
+    categoriesEmoji()
 
 }
 
-moviesTrendingPreview()
-moviesCategoryPreview()
+
+
+moviesTrendingFullView()
+categoriesEmoji()
