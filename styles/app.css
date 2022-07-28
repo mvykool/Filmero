@@ -42,7 +42,7 @@
     /* search*/
     
     .header-search-bar {
-        height: 30px;
+        height: 35px;
         border-radius: 5px;
         border: none;
         margin: 25px 0 20px 20px;
@@ -106,6 +106,18 @@
     a {
         text-decoration: none;
         color: var(--white);
+    }
+    
+    .back-button {
+        background: var(--purple-2);
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin: 1rem;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     /* categories*/
     
@@ -239,6 +251,17 @@
         margin-bottom: 20px;
         margin-top: 20px;
     }
+    
+    .section-trending-button-less {
+        color: var(--white);
+        background-color: var(--purple-3);
+        border: none;
+        padding: 10px;
+        border-radius: 10px;
+        margin-left: 10rem;
+        margin-bottom: 20px;
+        margin-top: 20px;
+    }
     /*Movie details*/
     
     .movies-details-img {
@@ -308,11 +331,6 @@
         color: var(--purple-3);
         size: 50px;
         margin: 5rem 2rem 2rem;
-    }
-    
-    .search-section-bar {
-        display: flex;
-        margin-left: 5rem;
     }
     
     .search-section-results {
