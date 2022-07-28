@@ -3,8 +3,8 @@ window.addEventListener("hashchanged", navigator, false);
 
 
 function homePage() {
-    moviesTrendingPreview()
-    moviesCategoryPreview()
+    moviesTrendingPreview();
+    moviesCategoryPreview();
 }
 
 function trendingPage() {
@@ -20,6 +20,8 @@ function moviesPage() {
 }
 
 function categoriesPage() {
+    moviesTrendingPreview();
+    categoriesEmoji();
     console.log("categories");
 }
 

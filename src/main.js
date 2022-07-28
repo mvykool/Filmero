@@ -99,8 +99,4 @@ async function moviesCategoryPreview() {
     categoriesEmoji()
 
 }
-
-
-
-moviesTrendingFullView()
-categoriesEmoji()
+moviesTrendingFullView();

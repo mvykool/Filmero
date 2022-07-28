@@ -86,6 +86,7 @@
         display: block;
         margin-right: -350px;
         margin-top: -5px;
+        z-index: 200;
     }
     
     .close-burger-menu {
@@ -265,6 +266,7 @@
         justify-content: center;
         align-items: center;
         height: 25%;
+        overflow: hidden !important;
         z-index: 100;
     }
     
@@ -276,9 +278,45 @@
     .movie-detail-categories {
         padding: 8px 20px;
         background-color: var(--black-2);
+        padding-top: 1.5rem;
+        margin-top: 1rem;
         margin-right: -10px;
         margin-left: -10px;
         margin-bottom: -10px;
+        overflow: hidden !important;
+    }
+    
+    .movie-details {
+        display: flex;
+        justify-content: end;
+        margin-bottom: -5rem;
+    }
+    
+    .movie-details-score {
+        margin: 5px;
+        font-size: 20px;
+        color: var(--white);
+    }
+    
+    .movie-details-star {
+        height: 30px;
+        width: 30px;
+    }
+    /*search section*/
+    
+    .search-word {
+        color: var(--purple-3);
+        size: 50px;
+        margin: 5rem 2rem 2rem;
+    }
+    
+    .search-section-bar {
+        display: flex;
+        margin-left: 5rem;
+    }
+    
+    .search-section-results {
+        margin: 2rem;
     }
     /*footer*/
     
