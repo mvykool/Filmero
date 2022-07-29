@@ -4,6 +4,9 @@ const categorySection = document.querySelector("#category-preview");
 const trendingSection = document.querySelector("#section-trending-full-view");
 const movieDetails = document.querySelector(".movie-details-section");
 const searchSection = document.querySelector(".search-section");
+const categorySearch = document.querySelector(".section-category");
+const categorySearchTitle = document.querySelector(".section-category-search-title");
+const searchInput = document.querySelector(".header-search-bar");
 
 
 //buttons interaction

@@ -11,6 +11,7 @@ const API = axios.create({
 });
 
 
+
 //get movies previews
 
 async function moviesTrendingPreview() {
@@ -57,8 +58,6 @@ async function moviesTrendingFullView() {
 
         movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
         trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
-
-
     });
 
 }
@@ -84,6 +83,10 @@ async function moviesCategoryPreview() {
         emoji.setAttribute("id", category.name);
 
         const categoryTitle = document.createElement("h3");
+        categoryTitle.addEventListener("click", () => {
+            location.hash = "#categorySearch=" + category.id + "-" + category.name;
+            location.reload()
+        });
         const categoryTitleText = document.createTextNode(category.name);
 
         //appending elements
@@ -97,5 +100,60 @@ async function moviesCategoryPreview() {
     });
 
     categoriesEmoji()
+
+}
+
+
+async function moviesByCategory(id) {
+    const { data } = await API("discover/movie", {
+        params: {
+            with_genres: id,
+        },
+    });
+
+    const moviesFull = data.results;
+    moviesFull.forEach(movie => {
+
+        const categoryMoviesFullView = document.querySelector("#section-category-full-view .section-trending-container");
+
+        const movieContainerCategoryFullView = document.createElement("div");
+        movieContainerCategoryFullView.classList.add("movie-container");
+
+        const movieContainerCategoryFullViewImage = document.createElement("img");
+        movieContainerCategoryFullViewImage.classList.add("section-trending-movies");
+        movieContainerCategoryFullViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+
+        movieContainerCategoryFullView.appendChild(movieContainerCategoryFullViewImage);
+        categoryMoviesFullView.appendChild(movieContainerCategoryFullView);
+
+
+    });
+
+}
+
+async function getMovieBySearch(query) {
+    const { data } = await API("search/movie", {
+        params: {
+            query,
+        },
+    });
+
+    const moviesFull = data.results;
+    moviesFull.forEach(movie => {
+
+        const searchView = document.querySelector("#search-section-view .search-section");
+
+        const searchContainerView = document.createElement("div");
+        searchContainerView.classList.add("movie-container");
+
+        const searchContainerViewImage = document.createElement("img");
+        searchContainerViewImage.classList.add("section-trending-movies");
+        searchContainerViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+
+        searchContainerView.appendChild(searchContainerViewImage);
+        searchView.appendChild(searchContainerView);
+
+
+    });
 
 }

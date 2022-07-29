@@ -54,7 +54,7 @@ backButton.addEventListener("click", () => {
 //search button
 
 searchButton.addEventListener("click", () => {
-    location.hash = "#search=";
+    location.hash = "#search=" + searchInput.value;
     window.location.reload();
 });
 
@@ -77,6 +77,7 @@ function homePage() {
     movieDetails.classList.add("inactive");
     searchSection.classList.add("inactive");
     backButton.classList.add("inactive");
+    categorySearch.classList.add("inactive");
 }
 
 function trendingPage() {
@@ -89,6 +90,9 @@ function trendingPage() {
     trendingSection.classList.remove("inactive");
     movieDetails.classList.add("inactive");
     searchSection.classList.add("inactive");
+    backButton.classList.remove("inactive");
+
+    categorySearch.classList.add("inactive");
 }
 
 function searchPage() {
@@ -98,8 +102,15 @@ function searchPage() {
     homeSectionTrendingPreview.classList.add("inactive");
     categorySection.classList.add("inactive");
     trendingSection.classList.add("inactive");
+    backButton.classList.remove("inactive");
+
     movieDetails.classList.add("inactive");
     searchSection.classList.remove("inactive");
+    categorySearch.classList.add("inactive");
+
+    const [urlBaseOfCategory, query] = location.hash.split("=");
+
+    getMovieBySearch(query);
 }
 
 function moviesPage() {
@@ -110,7 +121,9 @@ function moviesPage() {
     categorySection.classList.add("inactive");
     trendingSection.classList.add("inactive");
     movieDetails.classList.remove("inactive");
+    backButton.classList.remove("inactive");
     searchSection.classList.add("inactive");
+    categorySearch.classList.add("inactive");
 }
 
 function categoriesPage() {
@@ -120,9 +133,32 @@ function categoriesPage() {
     homeSection.classList.add("inactive");
     homeSectionTrendingPreview.classList.add("inactive");
     categorySection.classList.remove("inactive");
+    backButton.classList.remove("inactive");
+
     trendingSection.classList.add("inactive");
     movieDetails.classList.add("inactive");
     searchSection.classList.add("inactive");
+    categorySearch.classList.add("inactive");
+}
+
+function categoriesSearchPage() {
+    console.log("categories");
+
+    homeSection.classList.add("inactive");
+    homeSectionTrendingPreview.classList.add("inactive");
+    categorySection.classList.add("inactive");
+    backButton.classList.remove("inactive");
+    trendingSection.classList.add("inactive");
+    movieDetails.classList.add("inactive");
+    searchSection.classList.add("inactive");
+    categorySearch.classList.remove("inactive");
+
+    const [urlBaseOfCategory, categoryData] = location.hash.split("=");
+    const [categoryId, categoryName] = location.hash.split("-");
+    categorySearchTitle.innerHTML = categoryName;
+
+    moviesByCategory(categoryId);
+
 }
 
 
@@ -140,6 +176,9 @@ function navigator() {
 
     } else if (location.hash.startsWith("#category=")) {
         categoriesPage()
+
+    } else if (location.hash.startsWith("#categorySearch=")) {
+        categoriesSearchPage()
 
     } else {
         homePage()

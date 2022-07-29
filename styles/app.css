@@ -121,6 +121,13 @@
     }
     /* categories*/
     
+    .section-category-search-title {
+        font-size: 30px;
+        margin-left: 35px;
+        color: var(--purple-3);
+        letter-spacing: 5px;
+    }
+    
     .section-category-container {
         margin: 10px;
         padding: 20px 10px 20px 20px;
