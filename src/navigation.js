@@ -12,7 +12,7 @@ moreMovies.addEventListener("click", () => {
 
 seeLess.addEventListener("click", () => {
     trendingSection.classList.add("inactive");
-    backButton.classList.remove("inactive");
+    backButton.classList.add("inactive");
     seeLess.classList.add("inactive");
     moreMovies.classList.remove("inactive");
 });
