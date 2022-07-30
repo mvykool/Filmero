@@ -131,17 +131,18 @@ async function moviesByCategory(id) {
 
 }
 
-async function getMovieBySearch(query) {
+async function movieBySearch(query) {
     const { data } = await API("search/movie", {
         params: {
             query,
-        },
+        }
     });
+
 
     const moviesFull = data.results;
     moviesFull.forEach(movie => {
 
-        const searchView = document.querySelector("#search-section-view .search-section");
+        const searchMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
 
         const searchContainerView = document.createElement("div");
         searchContainerView.classList.add("movie-container");
@@ -151,9 +152,7 @@ async function getMovieBySearch(query) {
         searchContainerViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
 
         searchContainerView.appendChild(searchContainerViewImage);
-        searchView.appendChild(searchContainerView);
-
-
+        searchMoviesFullView.appendChild(searchContainerView);
     });
 
 }

@@ -6,7 +6,8 @@ const movieDetails = document.querySelector(".movie-details-section");
 const searchSection = document.querySelector(".search-section");
 const categorySearch = document.querySelector(".section-category");
 const categorySearchTitle = document.querySelector(".section-category-search-title");
-const searchInput = document.querySelector(".header-search-bar");
+const searchInput = document.querySelector("#header-search");
+const searchTitle = document.querySelector(".search-word");
 
 
 //buttons interaction

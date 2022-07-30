@@ -109,8 +109,9 @@ function searchPage() {
     categorySearch.classList.add("inactive");
 
     const [urlBaseOfCategory, query] = location.hash.split("=");
+    searchTitle.innerHTML = query;
 
-    getMovieBySearch(query);
+    movieBySearch(query);
 }
 
 function moviesPage() {
