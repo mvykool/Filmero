@@ -10,6 +10,8 @@ const searchInput = document.querySelector("#header-search");
 const searchTitle = document.querySelector(".search-word");
 const trendingTitle = document.querySelector(".section-trending-title");
 const categoriesPreview = document.querySelector("#category-preview .category-preview-list");
+const searchBar = document.querySelector(".header-search-bar");
+const logo = document.querySelector(".header-logo");
 
 
 //buttons interaction
@@ -31,6 +33,7 @@ const homeFromSideMenu = document.querySelector(".home-page-side-menu");
 
 //movie Details
 
+const detailTitle = document.querySelector(".details-title");
 const overview = document.querySelector(".movie-details-text");
 const stars = document.querySelector(".movie-details-score");
 const categoryListDetails = document.querySelector(".category-list");

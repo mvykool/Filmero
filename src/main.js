@@ -191,13 +191,12 @@ async function movieById(id) {
 
     bgImageDetails.setAttribute("src", movieImgUrl);
 
-
+    detailTitle.textContent = movie.title;
     overview.textContent = movie.overview;
-    stars.textContent = movie.vote_average;
+    stars.textContent = parseInt(movie.vote_average);
 
     createCategories(movie.genres, categoryListDetails);
 
-    smoothscroll();
     similarMovie(id);
 }
 

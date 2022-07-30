@@ -1,6 +1,13 @@
 window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchanged", navigator, false);
 
+//button to home by clicking on logo
+logo.addEventListener("click", () => {
+    location.hash = "#home";
+    location.reload();
+});
+
+
 //see more and less buttons of trending section
 
 moreMovies.addEventListener("click", () => {
@@ -62,11 +69,24 @@ searchButton.addEventListener("click", () => {
     window.location.reload();
 });
 
+searchBar.addEventListener("keypress", function(event) {
+    // If the user presses the "Enter" key on the keyboard
+    if (event.key === "Enter") {
+        // Cancel the default action, if needed
+        event.preventDefault();
+        // Trigger the button element with a click
+        searchButton.click();
+    }
+});
+
 //movie details
 
 movieDetail.addEventListener("click", () => {
     location.hash = "#movie=";
+
+    document.body.scrollTo(0, 0);
     window.location.reload();
+
 });
 
 //functions of pages
@@ -75,6 +95,7 @@ function homePage() {
     moviesTrendingPreview();
     moviesCategoryPreview();
     moviesTrendingFullView();
+    window.scrollTo(0, 0);
 
     categorySection.classList.add("inactive");
     trendingSection.classList.add("inactive");
@@ -132,10 +153,10 @@ function moviesPage() {
     searchSection.classList.add("inactive");
     categorySearch.classList.add("inactive");
 
-
     const [urlBaseOfCategory, movieId] = location.hash.split("=");
 
     movieById(movieId);
+
 }
 
 function categoriesPage() {
@@ -175,16 +196,10 @@ function categoriesSearchPage() {
 
 }
 
-function smoothscroll() {
-    const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
-    if (currentScroll > 0) {
-        window.requestAnimationFrame(smoothscroll);
-        window.scrollTo(0, currentScroll - (currentScroll / 5));
-    }
-};
-
 
 function navigator() {
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (location.hash.startsWith("#trending")) {
         trendingPage()
@@ -194,6 +209,7 @@ function navigator() {
 
     } else if (location.hash.startsWith("#movie=")) {
         moviesPage()
+
 
     } else if (location.hash.startsWith("#category=")) {
         categoriesPage()
@@ -205,5 +221,4 @@ function navigator() {
         homePage()
     }
 
-    location.hash
 }
