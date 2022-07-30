@@ -45,6 +45,7 @@
         height: 35px;
         border-radius: 5px;
         border: none;
+        padding-left: 10px;
         margin: 25px 0 20px 20px;
         display: block;
     }
@@ -162,6 +163,14 @@
     }
     /*section, posters de peliculas*/
     
+    .section-search-container {
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        overflow-x: hidden !important;
+    }
+    
     .section-container {
         background-color: var(--black-1);
         padding: 10px;
@@ -233,6 +242,13 @@
         letter-spacing: 5px;
     }
     
+    .section-trending-title {
+        font-size: 30px;
+        margin-left: 35px;
+        color: var(--purple-3);
+        letter-spacing: 5px;
+    }
+    
     .section-trending-container {
         display: flex;
         box-sizing: border-box;
@@ -270,6 +286,18 @@
         margin-top: 20px;
     }
     /*Movie details*/
+    
+    .movie-details-bg {
+        width: 90%;
+        height: 90%;
+        border-radius: 15px;
+        padding: 10px 10px 10px 5px;
+        margin: 15px 15px 15px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+    }
     
     .movies-details-img {
         width: 90%;
@@ -332,12 +360,27 @@
         height: 30px;
         width: 30px;
     }
+    
+    .similar-movies-title {
+        color: var(--white);
+        margin-top: 50px;
+    }
+    
+    .similar-movies {
+        display: grid;
+        gap: 1rem;
+        grid-auto-flow: column;
+        grid-auto-columns: 42%;
+        overflow-x: auto;
+        margin: 2rem 0;
+    }
     /*search section*/
     
     .search-word {
+        font-size: 30px;
+        margin-left: 35px;
         color: var(--purple-3);
-        size: 50px;
-        margin: 5rem 2rem 2rem;
+        letter-spacing: 5px;
     }
     
     .search-section-results {

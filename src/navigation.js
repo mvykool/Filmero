@@ -48,13 +48,17 @@ homeFromSideMenu.addEventListener("click", () => {
 //back button
 
 backButton.addEventListener("click", () => {
+    if (document.domain !== 'localhost') {
+        location.hash = '#home';
+    } else {}
+    history.back();
     window.location.href = document.referrer;
 });
 
 //search button
 
 searchButton.addEventListener("click", () => {
-    location.hash = "#search=" + searchInput.value;
+    location.hash = "#search=" + searchInput.value.split(" ").join('');
     window.location.reload();
 });
 
@@ -78,6 +82,7 @@ function homePage() {
     searchSection.classList.add("inactive");
     backButton.classList.add("inactive");
     categorySearch.classList.add("inactive");
+    searchTitle.classList.add("inactive");
 }
 
 function trendingPage() {
@@ -91,6 +96,8 @@ function trendingPage() {
     movieDetails.classList.add("inactive");
     searchSection.classList.add("inactive");
     backButton.classList.remove("inactive");
+    searchTitle.classList.add("inactive");
+
 
     categorySearch.classList.add("inactive");
 }
@@ -101,16 +108,15 @@ function searchPage() {
     homeSection.classList.add("inactive");
     homeSectionTrendingPreview.classList.add("inactive");
     categorySection.classList.add("inactive");
-    trendingSection.classList.add("inactive");
+    trendingSection.classList.remove("inactive");
+    trendingTitle.classList.add("inactive");
     backButton.classList.remove("inactive");
-
     movieDetails.classList.add("inactive");
-    searchSection.classList.remove("inactive");
+    searchSection.classList.add("inactive");
     categorySearch.classList.add("inactive");
 
     const [urlBaseOfCategory, query] = location.hash.split("=");
     searchTitle.innerHTML = query;
-
     movieBySearch(query);
 }
 
@@ -125,6 +131,11 @@ function moviesPage() {
     backButton.classList.remove("inactive");
     searchSection.classList.add("inactive");
     categorySearch.classList.add("inactive");
+
+
+    const [urlBaseOfCategory, movieId] = location.hash.split("=");
+
+    movieById(movieId);
 }
 
 function categoriesPage() {
@@ -160,8 +171,17 @@ function categoriesSearchPage() {
 
     moviesByCategory(categoryId);
 
+
+
 }
 
+function smoothscroll() {
+    const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
+    if (currentScroll > 0) {
+        window.requestAnimationFrame(smoothscroll);
+        window.scrollTo(0, currentScroll - (currentScroll / 5));
+    }
+};
 
 
 function navigator() {

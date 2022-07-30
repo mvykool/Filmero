@@ -1,7 +1,5 @@
 //emojies next to the category
 function categoriesEmoji() {
-    const morbious = document.querySelector(".morbious");
-    morbious.innerHTML = "🧛";
     const action = document.querySelector("#Action");
     action.innerHTML = " 🔫";
     const adventure = document.querySelector("#Adventure");
@@ -30,7 +28,7 @@ function categoriesEmoji() {
     mistery.innerHTML = " 🕵️‍♀️";
     const romance = document.querySelector("#Romance");
     romance.innerHTML = " 💏";
-    //const sciFi = document.querySelector("#Sci-Fi");
+    //const sciFi = document.querySelector("#Science%20Fiction");
     //sciFi.innerHTML = " 👨‍🔬";
     //const tvMovie = document.querySelector("#TV+Movie");
     //tvMovie.innerHTML = " 💏";
