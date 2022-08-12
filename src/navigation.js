@@ -97,6 +97,7 @@ function homePage() {
     moviesTrendingFullView();
     window.scrollTo(0, 0);
 
+    homeSectionTrendingPreview.classList.remove("inactive");
     categorySection.classList.add("inactive");
     trendingSection.classList.add("inactive");
     movieDetails.classList.add("inactive");

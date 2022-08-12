@@ -12,6 +12,15 @@ const API = axios.create({
 
 //helpers
 
+const lazyLoader = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const url = entry.target.getAttribute("data-img");
+            entry.target.setAttribute("src", url);
+        }
+    });
+});
+
 function createCategories(categories, container) {
     categories.forEach(category => {
 
@@ -50,8 +59,10 @@ function createCategories(categories, container) {
 async function moviesTrendingPreview() {
     const { data } = await API("trending/movie/day");
 
+    const containerLoad = document.querySelector(".section-trending-container");
+    containerLoad.innerHTML = " ";
 
-    const movies = data.results.slice(0, 5);
+    const movies = data.results.slice(0, 6);
     movies.forEach(movie => {
 
         const trendingMoviesPreview = document.querySelector("#section-trending-preview .section-trending-container");
@@ -61,11 +72,13 @@ async function moviesTrendingPreview() {
 
         const movieContainerTrendingImage = document.createElement("img");
         movieContainerTrendingImage.classList.add("section-trending-movies");
-        movieContainerTrendingImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        movieContainerTrendingImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
         movieContainerTrendingImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
         });
+
+        lazyLoader.observe(movieContainerTrendingImage);
 
         movieContainerTrending.appendChild(movieContainerTrendingImage);
         trendingMoviesPreview.appendChild(movieContainerTrending);
@@ -91,11 +104,13 @@ async function moviesTrendingFullView() {
 
         const movieContainerTrendingFullViewImage = document.createElement("img");
         movieContainerTrendingFullViewImage.classList.add("section-trending-movies");
-        movieContainerTrendingFullViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        movieContainerTrendingFullViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
         movieContainerTrendingFullViewImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
         });
+
+        lazyLoader.observe(movieContainerTrendingFullViewImage);
 
 
         movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
@@ -112,8 +127,11 @@ async function moviesCategoryPreview() {
     const { data } = await API("genre/movie/list");
 
     const categories = data.genres;
+    categoriesPreview.innerHTML = " ";
 
     createCategories(categories, categoriesPreview);
+
+
 
     categoriesEmoji()
 
@@ -137,13 +155,14 @@ async function moviesByCategory(id) {
 
         const movieContainerCategoryFullViewImage = document.createElement("img");
         movieContainerCategoryFullViewImage.classList.add("section-trending-movies");
-        movieContainerCategoryFullViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        movieContainerCategoryFullViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
         movieContainerCategoryFullViewImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
 
         });
 
+        lazyLoader.observe(movieContainerCategoryFullViewImage);
 
         movieContainerCategoryFullView.appendChild(movieContainerCategoryFullViewImage);
         categoryMoviesFullView.appendChild(movieContainerCategoryFullView);
@@ -171,12 +190,21 @@ async function movieBySearch(query) {
 
         const searchContainerViewImage = document.createElement("img");
         searchContainerViewImage.classList.add("section-trending-movies");
-        searchContainerViewImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        searchContainerViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
         searchContainerViewImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
 
         });
+
+        searchContainerViewImage.addEventListener('error', () => {
+            searchContainerViewImage.setAttribute(
+                "src",
+                "https://placesplit.sfo3.digitaloceanspaces.com/holavalle/production/fr-default-large_default.jpg"
+            );
+        })
+
+        lazyLoader.observe(searchContainerViewImage);
 
         searchContainerView.appendChild(searchContainerViewImage);
         searchMoviesFullView.appendChild(searchContainerView);
@@ -212,12 +240,13 @@ async function similarMovie(id) {
 
         const similarMovieImage = document.createElement("img");
         similarMovieImage.classList.add("section-trending-movies");
-        similarMovieImage.setAttribute("src", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        similarMovieImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
         similarMovieImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
         });
 
+        lazyLoader.observe(similarMovieImage);
 
         similarMovieContainer.appendChild(similarMovieImage);
         similarMovieView.appendChild(similarMovieContainer);

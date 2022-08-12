@@ -13,7 +13,6 @@ const categoriesPreview = document.querySelector("#category-preview .category-pr
 const searchBar = document.querySelector(".header-search-bar");
 const logo = document.querySelector(".header-logo");
 
-
 //buttons interaction
 
 const moreMovies = document.querySelector(".section-trending-button");

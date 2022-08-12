@@ -161,6 +161,42 @@
     .category-text {
         color: var(--white);
     }
+    /*Loading shapes*/
+    
+    .section-loading-container {
+        display: flex;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        overflow-x: hidden !important;
+    }
+    
+    .section-loading-movies {
+        height: 180px;
+        width: 150px;
+        margin: 15px 5px 15px 5px;
+        border-radius: 10px;
+        background-color: #570A57;
+        border: none;
+    }
+    
+    .section-loading-container-category {
+        margin: 10px;
+        padding: 20px 10px 20px 20px;
+        background-color: var(--purple-2);
+        border-radius: 10px;
+        list-style: none;
+        letter-spacing: 2px;
+        display: block;
+    }
+    
+    .section-loading-movies-category {
+        height: 20px;
+        width: 100px;
+        margin-top: 10px;
+        margin-left: -10px;
+        background-color: var(--purple-1);
+    }
     /*section, posters de peliculas*/
     
     .section-search-container {
@@ -342,7 +378,7 @@
         padding: 8px 20px;
         background-color: var(--black-2);
         padding-top: 1.5rem;
-        margin-top: 1rem;
+        margin-top: -10px;
         margin-right: -10px;
         margin-left: -10px;
         margin-bottom: -10px;
