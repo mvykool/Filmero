@@ -1,5 +1,11 @@
+let maxPage;
+let page = 1;
+let infiniteScroll;
+
 window.addEventListener("DOMContentLoaded", navigator, false);
 window.addEventListener("hashchanged", navigator, false);
+window.addEventListener("scroll", infiniteScroll)
+
 
 //button to home by clicking on logo
 logo.addEventListener("click", () => {
@@ -120,8 +126,10 @@ function trendingPage() {
     backButton.classList.remove("inactive");
     searchTitle.classList.add("inactive");
 
-
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     categorySearch.classList.add("inactive");
+    infiniteScroll = getMoreMovies;
+
 }
 
 function searchPage() {
@@ -200,6 +208,12 @@ function categoriesSearchPage() {
 
 function navigator() {
 
+
+    if (infiniteScroll) {
+        window.removeEventListener('scroll', infiniteScroll, { passive: false });
+        infiniteScroll = undefined;
+    }
+
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     if (location.hash.startsWith("#trending")) {
@@ -220,6 +234,10 @@ function navigator() {
 
     } else {
         homePage()
+    }
+
+    if (infiniteScroll) {
+        window.addEventListener('scroll', infiniteScroll, { passive: false });
     }
 
 }

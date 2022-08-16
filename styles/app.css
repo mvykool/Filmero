@@ -75,6 +75,11 @@
         align-items: center;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
+    
+    .header-burger-menu img {
+        height: 30px;
+        width: 30px;
+    }
     /*header-nav-bar*/
     
     .header-nav-bar {
@@ -454,6 +459,22 @@
         width: 50px;
     }
     /* STYLES SPECIFIC TO FOOTER  */
+    
+    .top-btn button {
+        background: var(--purple-2);
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        margin: 1rem 23rem;
+        border: none;
+        display: block;
+        position: -webkit-sticky;
+        position: fixed;
+        bottom: 0;
+        justify-content: center;
+        align-items: center;
+        z-index: 900;
+    }
     
     .footer .col {
         width: 190px;

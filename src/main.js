@@ -1,3 +1,9 @@
+function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+
 // API URL and API_KEY with axios
 
 const API = axios.create({
@@ -93,8 +99,8 @@ async function moviesTrendingPreview() {
 async function moviesTrendingFullView() {
     const { data } = await API("trending/movie/day");
 
-
     const moviesFull = data.results;
+    const maxPage = data.total_pages;
     moviesFull.forEach(movie => {
 
         const trendingMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
@@ -112,13 +118,61 @@ async function moviesTrendingFullView() {
 
         lazyLoader.observe(movieContainerTrendingFullViewImage);
 
-
         movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
         trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
     });
 
 }
 
+//params para infinite scroll
+
+async function getMoreMovies() {
+
+    const {
+        scrollTop,
+        scrollHeight,
+        clientHeight
+    } = document.documentElement;
+
+    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 25);
+
+    const pageIsNotMax = page < maxPage;
+    if (scrollIsBottom && pageIsNotMax) {
+
+        page++
+        const { data } = await API("trending/movie/day", {
+            params: {
+                page,
+            },
+        });
+
+
+        const moviesFull = data.results;
+        moviesFull.forEach(movie => {
+
+            const trendingMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
+
+            const movieContainerTrendingFullView = document.createElement("div");
+            movieContainerTrendingFullView.classList.add("movie-container");
+
+            const movieContainerTrendingFullViewImage = document.createElement("img");
+            movieContainerTrendingFullViewImage.classList.add("section-trending-movies");
+            movieContainerTrendingFullViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+            movieContainerTrendingFullViewImage.addEventListener("click", () => {
+                location.hash = "#movie=" + movie.id;
+                location.reload();
+            });
+
+            lazyLoader.observe(movieContainerTrendingFullViewImage);
+
+            movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+            trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
+
+
+        });
+    }
+
+}
 
 //categories
 
@@ -172,6 +226,8 @@ async function moviesByCategory(id) {
 
 }
 
+//search
+
 async function movieBySearch(query) {
     const { data } = await API("search/movie", {
         params: {
@@ -211,6 +267,9 @@ async function movieBySearch(query) {
     });
 
 }
+
+//details
+
 
 async function movieById(id) {
     const { data: movie } = await API("movie/" + id);
