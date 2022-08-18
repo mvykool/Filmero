@@ -235,6 +235,10 @@
         align-items: center;
     }
     
+    .category-list {
+        margin-top: -50px;
+    }
+    
     .section-details {
         background-color: var(--purple-1);
         color: var(--white);
@@ -369,7 +373,7 @@
         border-radius: 10px;
         justify-content: center;
         align-items: center;
-        height: 25%;
+        height: 35%;
         overflow: hidden !important;
         z-index: 100;
     }
@@ -383,7 +387,7 @@
         padding: 8px 20px;
         background-color: var(--black-2);
         padding-top: 1.5rem;
-        margin-top: -10px;
+        margin-top: 30px;
         margin-right: -10px;
         margin-left: -10px;
         margin-bottom: -10px;
@@ -409,7 +413,7 @@
     
     .similar-movies-title {
         color: var(--white);
-        margin-top: 50px;
+        margin-top: 30px;
     }
     
     .similar-movies {

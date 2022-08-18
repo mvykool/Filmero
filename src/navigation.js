@@ -87,13 +87,57 @@ searchBar.addEventListener("keypress", function(event) {
 
 //movie details
 
-movieDetail.addEventListener("click", () => {
+movieDetails.addEventListener("click", () => {
     location.hash = "#movie=";
 
     document.body.scrollTo(0, 0);
     window.location.reload();
 
 });
+
+//NAVIGATOR
+
+function navigator() {
+
+
+    if (infiniteScroll) {
+        window.removeEventListener('scroll', infiniteScroll, { passive: false });
+        infiniteScroll = undefined;
+    }
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    if (location.hash.startsWith("#trending")) {
+        trendingPage()
+
+    } else if (location.hash.startsWith("#search=")) {
+        searchPage()
+
+    } else if (location.hash.startsWith("#movie=")) {
+        moviesPage()
+
+
+    } else if (location.hash.startsWith("#category=")) {
+        categoriesPage()
+
+    } else if (location.hash.startsWith("#categorySearch=")) {
+        categoriesSearchPage()
+
+    } else {
+        homePage()
+    }
+
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+    if (infiniteScroll) {
+        window.addEventListener('scroll', infiniteScroll, { passive: false });
+    }
+
+}
+
+
+
 
 //functions of pages
 
@@ -129,7 +173,6 @@ function trendingPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     categorySearch.classList.add("inactive");
     infiniteScroll = getMoreMovies;
-
 }
 
 function searchPage() {
@@ -148,6 +191,7 @@ function searchPage() {
     const [urlBaseOfCategory, query] = location.hash.split("=");
     searchTitle.innerHTML = query;
     movieBySearch(query);
+    infiniteScroll = getMoreMoviesBySearch(query);
 }
 
 function moviesPage() {
@@ -201,43 +245,7 @@ function categoriesSearchPage() {
 
     moviesByCategory(categoryId);
 
+    infiniteScroll = getMoreMoviesByCategory(categoryId);
 
-
-}
-
-
-function navigator() {
-
-
-    if (infiniteScroll) {
-        window.removeEventListener('scroll', infiniteScroll, { passive: false });
-        infiniteScroll = undefined;
-    }
-
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-    if (location.hash.startsWith("#trending")) {
-        trendingPage()
-
-    } else if (location.hash.startsWith("#search=")) {
-        searchPage()
-
-    } else if (location.hash.startsWith("#movie=")) {
-        moviesPage()
-
-
-    } else if (location.hash.startsWith("#category=")) {
-        categoriesPage()
-
-    } else if (location.hash.startsWith("#categorySearch=")) {
-        categoriesSearchPage()
-
-    } else {
-        homePage()
-    }
-
-    if (infiniteScroll) {
-        window.addEventListener('scroll', infiniteScroll, { passive: false });
-    }
 
 }

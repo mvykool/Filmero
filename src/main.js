@@ -100,7 +100,7 @@ async function moviesTrendingFullView() {
     const { data } = await API("trending/movie/day");
 
     const moviesFull = data.results;
-    const maxPage = data.total_pages;
+    maxPage = data.total_pages;
     moviesFull.forEach(movie => {
 
         const trendingMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
@@ -126,6 +126,7 @@ async function moviesTrendingFullView() {
 
 //params para infinite scroll
 
+
 async function getMoreMovies() {
 
     const {
@@ -134,11 +135,10 @@ async function getMoreMovies() {
         clientHeight
     } = document.documentElement;
 
-    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 25);
+    const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 45);
 
     const pageIsNotMax = page < maxPage;
     if (scrollIsBottom && pageIsNotMax) {
-
         page++
         const { data } = await API("trending/movie/day", {
             params: {
@@ -167,12 +167,12 @@ async function getMoreMovies() {
 
             movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
             trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
-
+            console.log("scroll infinito");
 
         });
     }
-
 }
+
 
 //categories
 
@@ -200,6 +200,7 @@ async function moviesByCategory(id) {
     });
 
     const moviesFull = data.results;
+    maxPage = data.total_pages;
     moviesFull.forEach(movie => {
 
         const categoryMoviesFullView = document.querySelector("#section-category-full-view .section-trending-container");
@@ -226,6 +227,60 @@ async function moviesByCategory(id) {
 
 }
 
+//category infinite scroll
+
+function getMoreMoviesByCategory(id) {
+
+    return async function() {
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 45);
+
+        const pageIsNotMax = page < maxPage;
+        if (scrollIsBottom && pageIsNotMax) {
+            page++
+            const { data } = await API("discover/movie", {
+                params: {
+                    with_genres: id,
+                    page,
+                },
+            });
+
+
+            const moviesFull = data.results;
+            moviesFull.forEach(movie => {
+
+
+                const categoryMoviesFullView = document.querySelector("#section-category-full-view .section-trending-container");
+
+                const movieContainerCategoryFullView = document.createElement("div");
+                movieContainerCategoryFullView.classList.add("movie-container");
+
+                const movieContainerCategoryFullViewImage = document.createElement("img");
+                movieContainerCategoryFullViewImage.classList.add("section-trending-movies");
+                movieContainerCategoryFullViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+                movieContainerCategoryFullViewImage.addEventListener("click", () => {
+                    location.hash = "#movie=" + movie.id;
+                    location.reload();
+
+                });
+
+                lazyLoader.observe(movieContainerCategoryFullViewImage);
+
+                movieContainerCategoryFullView.appendChild(movieContainerCategoryFullViewImage);
+                categoryMoviesFullView.appendChild(movieContainerCategoryFullView);
+
+            });
+        }
+    }
+}
+
+
 //search
 
 async function movieBySearch(query) {
@@ -237,6 +292,7 @@ async function movieBySearch(query) {
 
 
     const moviesFull = data.results;
+    maxPage = data.total_pages;
     moviesFull.forEach(movie => {
 
         const searchMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
@@ -267,6 +323,59 @@ async function movieBySearch(query) {
     });
 
 }
+
+//search infinite scroll
+
+function getMoreMoviesBySearch(query) {
+
+    return async function() {
+
+        const {
+            scrollTop,
+            scrollHeight,
+            clientHeight
+        } = document.documentElement;
+
+        const scrollIsBottom = (scrollTop + clientHeight) >= (scrollHeight - 45);
+
+        const pageIsNotMax = page < maxPage;
+        if (scrollIsBottom && pageIsNotMax) {
+            page++
+            const { data } = await API("search/movie", {
+                params: {
+                    query,
+                    page,
+                }
+            });
+
+
+            const moviesFull = data.results;
+            moviesFull.forEach(movie => {
+
+                const trendingMoviesFullView = document.querySelector("#section-trending-full-view .section-trending-container");
+
+                const movieContainerTrendingFullView = document.createElement("div");
+                movieContainerTrendingFullView.classList.add("movie-container");
+
+                const movieContainerTrendingFullViewImage = document.createElement("img");
+                movieContainerTrendingFullViewImage.classList.add("section-trending-movies");
+                movieContainerTrendingFullViewImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+                movieContainerTrendingFullViewImage.addEventListener("click", () => {
+                    location.hash = "#movie=" + movie.id;
+                    location.reload();
+                });
+
+                lazyLoader.observe(movieContainerTrendingFullViewImage);
+
+                movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+                trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
+                console.log("scroll infinito");
+
+            });
+        }
+    }
+}
+
 
 //details
 
