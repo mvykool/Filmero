@@ -84,9 +84,15 @@ async function moviesTrendingPreview() {
             location.reload();
         });
 
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+        });
         lazyLoader.observe(movieContainerTrendingImage);
 
         movieContainerTrending.appendChild(movieContainerTrendingImage);
+        movieContainerTrending.appendChild(movieLikeBtn);
         trendingMoviesPreview.appendChild(movieContainerTrending);
 
 
@@ -115,10 +121,16 @@ async function moviesTrendingFullView() {
             location.hash = "#movie=" + movie.id;
             location.reload();
         });
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+        });
 
         lazyLoader.observe(movieContainerTrendingFullViewImage);
 
         movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+        movieContainerTrendingFullView.appendChild(movieLikeBtn);
         trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
     });
 
@@ -162,10 +174,16 @@ async function getMoreMovies() {
                 location.hash = "#movie=" + movie.id;
                 location.reload();
             });
+            const movieLikeBtn = document.createElement("button");
+            movieLikeBtn.classList.add("movie-like-btn");
+            movieLikeBtn.addEventListener("click", () => {
+                movieLikeBtn.classList.toggle("movie-like-btn-two");
+            });
 
             lazyLoader.observe(movieContainerTrendingFullViewImage);
 
             movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+            movieContainerTrendingFullView.appendChild(movieLikeBtn);
             trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
             console.log("scroll infinito");
 
@@ -216,10 +234,17 @@ async function moviesByCategory(id) {
             location.reload();
 
         });
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+        });
+
 
         lazyLoader.observe(movieContainerCategoryFullViewImage);
 
         movieContainerCategoryFullView.appendChild(movieContainerCategoryFullViewImage);
+        movieContainerCategoryFullView.appendChild(movieLikeBtn);
         categoryMoviesFullView.appendChild(movieContainerCategoryFullView);
 
 
@@ -269,10 +294,17 @@ function getMoreMoviesByCategory(id) {
                     location.reload();
 
                 });
+                const movieLikeBtn = document.createElement("button");
+                movieLikeBtn.classList.add("movie-like-btn");
+                movieLikeBtn.addEventListener("click", () => {
+                    movieLikeBtn.classList.toggle("movie-like-btn-two");
+                });
+
 
                 lazyLoader.observe(movieContainerCategoryFullViewImage);
 
                 movieContainerCategoryFullView.appendChild(movieContainerCategoryFullViewImage);
+                movieContainerCategoryFullView.appendChild(movieLikeBtn);
                 categoryMoviesFullView.appendChild(movieContainerCategoryFullView);
 
             });
@@ -315,10 +347,16 @@ async function movieBySearch(query) {
                 "https://placesplit.sfo3.digitaloceanspaces.com/holavalle/production/fr-default-large_default.jpg"
             );
         })
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+        });
 
         lazyLoader.observe(searchContainerViewImage);
 
         searchContainerView.appendChild(searchContainerViewImage);
+        searchContainerView.appendChild(movieLikeBtn);
         searchMoviesFullView.appendChild(searchContainerView);
     });
 
@@ -364,10 +402,17 @@ function getMoreMoviesBySearch(query) {
                     location.hash = "#movie=" + movie.id;
                     location.reload();
                 });
+                const movieLikeBtn = document.createElement("button");
+                movieLikeBtn.classList.add("movie-like-btn");
+                movieLikeBtn.addEventListener("click", () => {
+                    movieLikeBtn.classList.toggle("movie-like-btn-two");
+                });
+
 
                 lazyLoader.observe(movieContainerTrendingFullViewImage);
 
                 movieContainerTrendingFullView.appendChild(movieContainerTrendingFullViewImage);
+                movieContainerTrendingFullView.appendChild(movieLikeBtn);
                 trendingMoviesFullView.appendChild(movieContainerTrendingFullView);
                 console.log("scroll infinito");
 
@@ -413,10 +458,17 @@ async function similarMovie(id) {
             location.hash = "#movie=" + movie.id;
             location.reload();
         });
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+        });
+
 
         lazyLoader.observe(similarMovieImage);
 
         similarMovieContainer.appendChild(similarMovieImage);
+        similarMovieContainer.appendChild(movieLikeBtn);
         similarMovieView.appendChild(similarMovieContainer);
     });
 }
