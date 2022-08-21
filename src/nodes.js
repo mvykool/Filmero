@@ -12,6 +12,7 @@ const trendingTitle = document.querySelector(".section-trending-title");
 const categoriesPreview = document.querySelector("#category-preview .category-preview-list");
 const searchBar = document.querySelector(".header-search-bar");
 const logo = document.querySelector(".header-logo");
+const favSection = document.querySelector(".section-favorite");
 
 //buttons interaction
 

@@ -3,6 +3,8 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+
+
 function likedMovieList() {
     const item = JSON.parse(localStorage.getItem("liked_movies"));
     let movies;
@@ -30,6 +32,7 @@ function likeMovie(movie) {
 
 
 // API URL and API_KEY with axios
+
 
 const API = axios.create({
     baseURL: "https://api.themoviedb.org/3/",
