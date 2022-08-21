@@ -145,6 +145,7 @@ function homePage() {
     moviesTrendingPreview();
     moviesCategoryPreview();
     moviesTrendingFullView();
+    getLikedMovies();
     window.scrollTo(0, 0);
 
     homeSectionTrendingPreview.classList.remove("inactive");

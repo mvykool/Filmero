@@ -3,6 +3,31 @@ function topFunction() {
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
 
+function likedMovieList() {
+    const item = JSON.parse(localStorage.getItem("liked_movies"));
+    let movies;
+
+    if (item) {
+        movies = item;
+    } else {
+        movies = {};
+    }
+
+    return movies;
+}
+
+function likeMovie(movie) {
+    const likedMovies = likedMovieList();
+
+    if (likedMovies[movie.id]) {
+        likedMovies[movie.id] = undefined;
+    } else {
+        likedMovies[movie.id] = movie;
+    }
+
+    localStorage.setItem("liked_movies", JSON.stringify(likedMovies));
+}
+
 
 // API URL and API_KEY with axios
 
@@ -86,8 +111,13 @@ async function moviesTrendingPreview() {
 
         const movieLikeBtn = document.createElement("button");
         movieLikeBtn.classList.add("movie-like-btn");
+        likedMovieList()[movie.id] && movieLikeBtn.classList.add("movie-like-btn-two");
         movieLikeBtn.addEventListener("click", () => {
             movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
+            window.location.reload();
+            document.documentElement.scrollTop = 0;
+            document.body.scrollTop = 0;
         });
         lazyLoader.observe(movieContainerTrendingImage);
 
@@ -125,6 +155,7 @@ async function moviesTrendingFullView() {
         movieLikeBtn.classList.add("movie-like-btn");
         movieLikeBtn.addEventListener("click", () => {
             movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
         });
 
         lazyLoader.observe(movieContainerTrendingFullViewImage);
@@ -178,6 +209,7 @@ async function getMoreMovies() {
             movieLikeBtn.classList.add("movie-like-btn");
             movieLikeBtn.addEventListener("click", () => {
                 movieLikeBtn.classList.toggle("movie-like-btn-two");
+                likeMovie(movie);
             });
 
             lazyLoader.observe(movieContainerTrendingFullViewImage);
@@ -238,6 +270,7 @@ async function moviesByCategory(id) {
         movieLikeBtn.classList.add("movie-like-btn");
         movieLikeBtn.addEventListener("click", () => {
             movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
         });
 
 
@@ -298,6 +331,7 @@ function getMoreMoviesByCategory(id) {
                 movieLikeBtn.classList.add("movie-like-btn");
                 movieLikeBtn.addEventListener("click", () => {
                     movieLikeBtn.classList.toggle("movie-like-btn-two");
+                    likeMovie(movie);
                 });
 
 
@@ -351,6 +385,7 @@ async function movieBySearch(query) {
         movieLikeBtn.classList.add("movie-like-btn");
         movieLikeBtn.addEventListener("click", () => {
             movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
         });
 
         lazyLoader.observe(searchContainerViewImage);
@@ -406,6 +441,7 @@ function getMoreMoviesBySearch(query) {
                 movieLikeBtn.classList.add("movie-like-btn");
                 movieLikeBtn.addEventListener("click", () => {
                     movieLikeBtn.classList.toggle("movie-like-btn-two");
+                    likeMovie(movie);
                 });
 
 
@@ -457,11 +493,13 @@ async function similarMovie(id) {
         similarMovieImage.addEventListener("click", () => {
             location.hash = "#movie=" + movie.id;
             location.reload();
+
         });
         const movieLikeBtn = document.createElement("button");
         movieLikeBtn.classList.add("movie-like-btn");
         movieLikeBtn.addEventListener("click", () => {
             movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
         });
 
 
@@ -471,4 +509,41 @@ async function similarMovie(id) {
         similarMovieContainer.appendChild(movieLikeBtn);
         similarMovieView.appendChild(similarMovieContainer);
     });
+}
+
+function getLikedMovies() {
+    const likedMovies = likedMovieList();
+    const movieArray = Object.values(likedMovies);
+
+    movieArray.forEach(movie => {
+        const likedMovieView = document.querySelector(".favorite-movies");
+
+        const likedMovieContainer = document.createElement("div");
+        likedMovieContainer.classList.add("movie-container");
+
+        const likedMovieImage = document.createElement("img");
+        likedMovieImage.classList.add("section-trending-movies");
+        likedMovieImage.setAttribute("data-img", "https://image.tmdb.org/t/p/w300/" + movie.poster_path);
+        likedMovieImage.addEventListener("click", () => {
+            location.hash = "#movie=" + movie.id;
+            location.reload();
+
+        });
+        const movieLikeBtn = document.createElement("button");
+        movieLikeBtn.classList.add("movie-like-btn");
+        likedMovieList()[movie.id] && movieLikeBtn.classList.add("movie-like-btn-two");
+        movieLikeBtn.addEventListener("click", () => {
+            movieLikeBtn.classList.toggle("movie-like-btn-two");
+            likeMovie(movie);
+        });
+
+
+        lazyLoader.observe(likedMovieImage);
+
+        likedMovieContainer.appendChild(likedMovieImage);
+        likedMovieContainer.appendChild(movieLikeBtn);
+        likedMovieView.appendChild(likedMovieContainer);
+    });
+
+    console.log(likedMovies);
 }
